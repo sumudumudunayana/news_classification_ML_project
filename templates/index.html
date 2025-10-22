@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News Headline Classifier</title>
+  <link rel="stylesheet" href="/static/css/main.css"/>
+</head>
+<body>
+  <header>
+    <h1>News Headline Classifier</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Input + Button Section -->
+      <form action="/" method="post" class="predict-form">
+        <label for="headingInput">Enter a news headline:</label>
+        <input type="text" id="headingInput" name="headingInput" placeholder="Enter here" required />
+        <button id="predictBtn" type="submit">Predict</button>
+      </form>
+
+      <!-- Result Display Area -->
+      {% if prediction %}
+      <div id="result" class="result">
+        <h2 id="predLabel">Prediction: {{ prediction | capitalize }}</h2>
+      </div>
+      {% endif %}
+
+      <!-- Show Data from Flask -->
+      <div class="sample">
+        <h3>Sample Headlines</h3>
+        <ul>
+          {% for n in data['news'] %}
+            <li>{{ n }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- <div class="counts">
+        <h3>Category Counts</h3>
+        <ul>
+          <li><strong>World:</strong> {{ data['world'] }}</li>
+          <li><strong>Sports:</strong> {{ data['sports'] }}</li>
+          <li><strong>Business:</strong> {{ data['business'] }}</li>
+          <li><strong>Science &amp; Technology:</strong> {{ data['science & technology'] }}</li>
+        </ul>
+      </div> -->
+    </div>
+  </main>
+
+  <footer>
+    <p>ML Project — AG News Classifier</p>
+  </footer>
+</body>
+</html>
